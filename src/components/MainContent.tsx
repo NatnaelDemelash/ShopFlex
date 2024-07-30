@@ -73,7 +73,36 @@ const MainContent = () => {
   };
 
   const filtererdProducts = getFilteredProducts();
-  console.log(filtererdProducts);
+
+  const totalProduct = 100;
+  const totalPage = Math.ceil(totalProduct / itemsPerPage);
+
+  const handlePageChange = (page: number) => {
+    if (page > 0 && page <= totalPage) {
+      setCurrentPage(page);
+    }
+  };
+
+  const getPaginationButton = () => {
+    const buttons: number[] = [];
+
+    let startPage = Math.max(1, currentPage - 2);
+    let endPage = Math.min(totalPage, currentPage + 2);
+
+    if (currentPage - 2 < 1) {
+      endPage = Math.min(totalPage, endPage + (2 - currentPage - 1));
+    }
+
+    if (currentPage + 2 > totalPage) {
+      startPage = Math.min(1, startPage - (2 - totalPage - currentPage));
+    }
+
+    for (let page = startPage; page <= endPage; page++) {
+      buttons.push(page);
+    }
+
+    return buttons;
+  };
 
   return (
     <section className="xl:w-[55rem] lg:w-[55rem] sm:w-[44rem] xs:w-[20rem] p-5">
@@ -126,6 +155,40 @@ const MainContent = () => {
               price={product.price}
             />
           ))}
+        </div>
+
+        <div className="flex flex-col justify-between items-center sm:flex-row mt-10">
+          {/* Preveious Btn */}
+          <button
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+            className="px-4 py-2 rounded-full bg-black text-white mx-2"
+          >
+            Preveious
+          </button>
+
+          {/* 1,2,3,4 */}
+          <div className="flex flex-wrap justify-center">
+            {/* Pagination Buttons */}
+            {getPaginationButton().map((page) => (
+              <button
+                key={page}
+                onClick={() => handlePageChange(page)}
+                className={`border px-4 py-2 mx-1 rounded-full ${
+                  page === currentPage ? "bg-black text-white" : ""
+                }`}
+              ></button>
+            ))}
+          </div>
+
+          {/* Next Button */}
+          <button
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPage}
+            className="px-4 py-2 rounded-full bg-black text-white mx-2"
+          >
+            Next
+          </button>
         </div>
       </div>
     </section>
