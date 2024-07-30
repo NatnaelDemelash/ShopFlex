@@ -19,7 +19,7 @@ const Sidebar = () => {
     setMinPrice,
     maxPrice,
     setMaxPrice,
-    keword,
+    keyword,
     setKeyword,
   } = useFilter();
   const [categories, setCategories] = useState<string[]>([]);
