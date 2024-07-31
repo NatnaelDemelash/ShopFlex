@@ -177,7 +177,9 @@ const MainContent = () => {
                 className={`border px-4 py-2 mx-1 rounded-full ${
                   page === currentPage ? "bg-black text-white" : ""
                 }`}
-              ></button>
+              >
+                {page}
+              </button>
             ))}
           </div>
 
