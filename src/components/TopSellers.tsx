@@ -12,7 +12,7 @@ const TopSellers = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://randomuser.me/api/?results=7");
+        const response = await fetch("https://randomuser.me/api/?results=5");
         const data = await response.json();
 
         const authorsData: Author[] = data.results.map((user: any) => ({
@@ -39,7 +39,7 @@ const TopSellers = () => {
   };
 
   return (
-    <div className="bg-white p-5 mx-5 mt-[5rem] border w-[23rem] rounded">
+    <div className="bg-white p-5 mx-5 mt-[6.5rem] border w-[23rem] rounded">
       <h2 className="text-xl font-bold mb-5">Top Sellers</h2>
 
       <ul>
