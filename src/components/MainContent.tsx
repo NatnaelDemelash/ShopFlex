@@ -56,7 +56,7 @@ const MainContent = () => {
 
     if (searchQuery) {
       filteredProducts = filteredProducts.filter((product) =>
-        product.name.toLowerCase().includes(searchQuery.toLowerCase())
+        product.title.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
 
@@ -105,7 +105,7 @@ const MainContent = () => {
   };
 
   return (
-    <section className="xl:w-[65rem] mr-[12rem] lg:w-[65rem] sm:w-[50rem] xs:w-[20rem] p-5">
+    <section className="xl:w-[55rem] mr-[12rem] lg:w-[55rem] sm:w-[50rem] xs:w-[20rem] p-5">
       <div className="mb-5">
         <div className="flex flex-col sm:flex-row justify-between items-center">
           <div className="relative my-5">
